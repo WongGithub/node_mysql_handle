@@ -40,16 +40,18 @@ createTable：创建表
 var mssh = require('node_mysql_handle'); // 加载模块
 
 //连接数据库，并初始化
-mssh.mysqlSimpleHandle.init({
-    host:'localhost',//服务器地址
-    user:'root',//用户名
-    database:'nodedb',//连接的数据库名
-    password:'1234',//密码
-    port:3306 //端口
-});
+
+    mssh.mysqlSimpleHandle.init({
+      host:'localhost',//服务器地址
+      user:'root',//用户名
+      database:'nodedb',//连接的数据库名
+      password:'1234',//密码
+      port:3306 //端口
+    });
 
 //创建表
-mssh.mysqlSimpleHandle.createTable({
+
+    mssh.mysqlSimpleHandle.createTable({
     table:'table001', //表名
     items:[ //创建表项
         {
@@ -67,21 +69,23 @@ mssh.mysqlSimpleHandle.createTable({
     ],
     engine:'MyISAM', //数据库类型 默认值innodb
     charset:'utf8' //字符类型 默认值 ntf8
-},function(err,result){ //回调函数
+    },function(err,result){ //回调函数
     res.send(err?err:result);
-});
+    });
 
 
 //插入记录or添加记录
-mssh.mysqlSimpleHandle.insert({
-        table:操作的表名,
+
+    mssh.mysqlSimpleHandle.insert({
+         table:操作的表名,
         values:'记录值1,值2,值3'
     },function(err,result){ // 回调函数
         
     });
 
 //删除
-mssh.mysqlSimpleHandle.delete({
+
+     mssh.mysqlSimpleHandle.delete({
         table:操作的表名,
         condition:删选条件(非必须)
         }
@@ -90,7 +94,8 @@ mssh.mysqlSimpleHandle.delete({
       });
     
 //检索
-mssh.mysqlSimpleHandle.select({
+
+    mssh.mysqlSimpleHandle.select({
        table:操作的表名,
        field:列名/项名,
        condition:检索条件
@@ -100,6 +105,7 @@ mssh.mysqlSimpleHandle.select({
       });
 
 //更新项
+
     mssh.mysqlSimpleHandle.update({
         table:操作的表名,
         newValues:'ua="IOS"', //更新的内容
@@ -110,6 +116,7 @@ mssh.mysqlSimpleHandle.select({
     });
 
 //导出数据到文件
+
       mssh.mysqlSimpleHandle.outToFile({
           table:操作表,
           dir:'c:/work/ing/sql_test03.txt',//导出的文件及路径
